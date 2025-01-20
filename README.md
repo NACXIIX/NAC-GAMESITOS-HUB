@@ -8,6 +8,7 @@ Este es un proyecto propio que hice en base de un ejercicio integrador que tenia
 ## <u>Tecnologías utilizadas:</u>
 1. Python
 2. Flask
+3. Javascript
 3. Html
 4. Bootstrap
 
