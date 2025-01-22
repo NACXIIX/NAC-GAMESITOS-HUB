@@ -23,14 +23,17 @@ class Videogame:
             raise TypeError("El valor ingresado por parametro en my_score debe ser un numero entero positivo.")
         if not isinstance(favourite, bool):
             raise TypeError("El valor ingresado por parametro en favorito debe un valor booleano.")
-        self.__id = id
+        self.__id = self.ultimoID()
         self.__title = title
         self.__my_opinion = my_opinion
         self.__completed = completed
         self.__my_score = my_score
         self.__favourite = favourite
 
-        
+    def ultimoID(self):
+        Videogame.__ID += 1
+        return Videogame.__ID
+    
     def get_id(self)->int:
         return self.__id
     
@@ -59,9 +62,9 @@ class Videogame:
             raise TypeError("El valor ingresado por parametro en title debe ser un string.")
         self.__title = title
         
-    def set_my_opinion(self, my_opinion:int):
-        if not isinstance (my_opinion, int) or my_opinion < 0:
-            raise TypeError("El valor ingresado por parametro en my_opinion debe ser un numero entero positivo.")
+    def set_my_opinion(self, my_opinion:str):
+        if not isinstance (my_opinion, str) or my_opinion.isspace() or my_opinion == "":
+            raise TypeError("El valor ingresado por parametro en my_opinion debe ser un string.")
         self.__my_opinion = my_opinion
     
     def set_completed(self, completed:bool):
@@ -70,8 +73,8 @@ class Videogame:
         self.__completed = completed
         
     def set_my_score(self, my_score:int):
-        if not isinstance (my_score, int) or my_score < 0:
-            raise TypeError("El valor ingresado por parametro en my_score debe ser un numero entero positivo.")
+        if not isinstance (my_score, int) or (my_score < 0 and my_score > 10):
+            raise TypeError("El valor ingresado por parametro en my_score debe ser un numero entero positivo entre entre 1 y 10 inclusives.")
         self.__my_score = my_score
     
     def set_favourite(self, favourite:bool):

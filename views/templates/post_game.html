@@ -58,10 +58,7 @@
                         <h2 class="text-center">Add a new videogame</h2>
                     </div>
                     <div>
-                        <div class="container mb-3">
-                            <label for="">Title ID: </label>
-                            <input class="border border-primary rounded-2" type="text" name="id" required> <br> 
-                        </div>
+
                         <div class="container mb-3">
                             <label for="">Title: </label>
                             <input class="border border-primary rounded-2"type="text" name="title" id="title" required><br>
@@ -85,7 +82,7 @@
                             <input class="form-control border border-primary"aria-label="With textarea" type="text" name="my_opinion" id="my_opinion" required><br>
                         </div>
                         <div class="container mb-3 p-2 text-center">
-                    <button class="button-login" type="submit">Add</button>
+                    <button class="btn btn-primary" type="submit" id="postButton">Add</button>
                 </div>
             </form>
             
@@ -96,5 +93,5 @@
 </main>
 
 {% block script %}
-
+<script src="{{ url_for('static', filename='js/post.js') }}"></script>
 {% endblock %}

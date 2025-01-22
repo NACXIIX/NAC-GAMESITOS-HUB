@@ -16,7 +16,7 @@ Este es un proyecto propio que hice en base de un ejercicio integrador que tenia
 
 Aqui los comandos a colocar en consola para inicializar el proyecto:</br>
 1. `git clone https://github.com/NACXIIX/Gestor-de-videogames.git`
-2. `python -m .venv venv`
+2. `python -m venv .venv`
 3. `.venv/Scripts/activate en Windows`
 `source .venv/bin/activate en Linux/Mac` 
 4. `pip install Flask passlib`

@@ -54,19 +54,18 @@ def agregarvideogame():
     if session.get("username") is not None:
         is_navigator = "Mozilla" in request.user_agent.string or "Chrome" in request.user_agent.string
         try:
-            data = request.form
-            if not ("id" in data and "title" in data and "my_opinion" in data and "completed" in data and "my_score" in data and "favourite" in data):
+            data = request.json
+            if not ("title" in data and "my_opinion" in data and "completed" in data and "my_score" in data and "favourite" in data):
                 response = jsonify ({"error": "Faltan datos"})
                 status_code = 400
             else:
-                id = int(data["id"])
+                id = 999
                 title = data["title"]
                 my_opinion = data["my_opinion"]
-                completed = data.get("completed", "false").lower() == "true"
+                completed = str(data.get("completed", "false")).lower() == "true"
                 my_score = int(data["my_score"])
-                favourite = data.get("favourite", "false").lower() == "true"
+                favourite = str(data.get("favourite", "false")).lower() == "true"
                 if repo_videogames.addVideogame(id, title, my_opinion, completed, my_score, favourite):
-                    
                     videogames = [videogame.toDict() for videogame in repo_videogames.getAllGames()]
                     if is_navigator:
                         return render_template("all_games.html", videogames=videogames)
@@ -98,7 +97,6 @@ def updateVideogame(id):
     if session.get("username") is not None:
         try:
             data = request.json
-            print(data)
             if not ("id" in data and "title" in data and "my_opinion" in data and "completed" in data and "my_score" in data and "favourite" in data):
                 response = jsonify({"error": "Faltan datos"})
                 status_code = 400

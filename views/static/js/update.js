@@ -36,7 +36,7 @@ document.getElementById("updateButton").addEventListener("click", function () {
     })
     .then((response) => {
         if (response.ok) {
-            alert("videogame actualizado con éxito");
+            alert("Videogame updated\nYou will be redirected to the list of videogames.");
             window.location.href = "/videogames";
         } else {
             return response.json().then((error) => {
@@ -45,7 +45,7 @@ document.getElementById("updateButton").addEventListener("click", function () {
         }
     })
     .catch((error) => {
-        console.error("Error al actualizar el videogame:", error);
-        alert("Error al procesar la solicitud.");
+        console.error("Error updating the videogame:", error);
+        alert("Error processing the request.");
     });
 });
