@@ -1,25 +1,46 @@
-document.getElementById("deleteButton").addEventListener("click", function () {
-    const videogameId = document.getElementById("videogame_id").value;
+document.querySelectorAll(".deleteButton").forEach((boton) => {
+    boton.addEventListener("click", function () {
+        const videojuegoId = this.getAttribute("data-id");
 
-    if (!videogameId) {
-        alert("Please select a videogame");
+        const confirmButton = document.getElementById("confirmDelete");
+        confirmButton.setAttribute("data-id", videojuegoId);
+
+        const deleteModal = new bootstrap.Modal(document.getElementById("delete-form"));
+        deleteModal.show();
+
+        document.getElementById("delete-form").addEventListener('hidden.bs.modal', function () {
+            confirmButton.removeAttribute("data-id");
+
+            const backdrop = document.querySelector(".modal-backdrop");
+            if (backdrop) backdrop.remove();
+
+            document.body.classList.remove("modal-open");
+            document.body.style.overflow = "auto";
+        }, { once: true });
+    });
+});
+
+document.getElementById("confirmDelete").addEventListener("click", function () {
+    const videojuegoId = this.getAttribute("data-id");
+
+    if (!videojuegoId) {
+        alert("El ID del videojuego no está disponible.");
         return;
     }
 
-    const data = {
-        id: videogameId
-    };
-
-    fetch(`/videogames/${videogameId}`, {
+    fetch(`/videogames/${videojuegoId}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json",
+        },
     })
-         .then((response) => {
+        .then((response) => {
             if (response.ok) {
-                alert("Videogame deleted\nYou will be redirected to the list of videogames.");
-                window.location.href = "/videogames";
+
+                const deleteModal = bootstrap.Modal.getInstance(document.getElementById("delete-form"));
+                if (deleteModal) deleteModal.hide();
+
+                window.location.reload();
             } else {
                 return response.json().then((error) => {
                     alert("Error: " + error.error);
@@ -27,7 +48,7 @@ document.getElementById("deleteButton").addEventListener("click", function () {
             }
         })
         .catch((error) => {
-            console.error("Error deleting the videogame:", error);
-            alert("Error processing the request.");
+            console.error("Error al eliminar el videojuego:", error);
+            alert("Hubo un problema al procesar la solicitud.");
         });
 });

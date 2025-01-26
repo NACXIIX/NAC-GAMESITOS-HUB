@@ -14,7 +14,7 @@ document.getElementById("updateButton").addEventListener("click", function () {
     const favourite = favouriteElement.checked;
 
     if (!videogameId) {
-        alert("Por favor selecciona un videogame.");
+        alert("Please, select a videogame.");
         return;
     }
 
@@ -36,8 +36,7 @@ document.getElementById("updateButton").addEventListener("click", function () {
     })
     .then((response) => {
         if (response.ok) {
-            alert("Videogame updated\nYou will be redirected to the list of videogames.");
-            window.location.href = "/videogames";
+            window.location.reload()
         } else {
             return response.json().then((error) => {
                 alert("Error: " + error.error);

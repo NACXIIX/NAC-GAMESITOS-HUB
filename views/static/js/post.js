@@ -4,7 +4,10 @@ document.getElementById("postButton").addEventListener("click", function () {
     const myScoreElement = document.getElementById("my_score");
     const completedElement = document.getElementById("completed");
     const favouriteElement = document.getElementById("favourite");
-
+    
+    if (!titleElement.value || !myOpinionElement.value || !myScoreElement.value) {
+        return
+    }
     const title = titleElement.value;
     const myOpinion = myOpinionElement.value;
     const myScore = parseInt(myScoreElement.value);
