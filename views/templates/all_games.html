@@ -14,10 +14,10 @@
             <div class="collapse navbar-collapse" id="navbar-videogames">
                 <ul class="nav justify-content-center nav-pills w-100">
                     <li class="nav-item">
-                        <a href="/videogames" class="nav-link bg-outline-danger active">ALL GAMES</a>
+                        <a href="/videogames" class="nav-link bg-outline-danger active">MY GAMES</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/videogames/post-game" class="nav-link btn" data-bs-toggle="modal" data-bs-target="#post-form"><i class="fa-solid fa-plus"></i> ADD GAME</a>
+                        <a href="/videogames/post-game" class="nav-link btn" data-bs-toggle="modal" data-bs-target="#post-form"><i class="fa-solid fa-plus"></i> add game</a>
                     </li>
                     <form class="d-flex ms-auto" role="search">
                         <input class="form-control me-2 bg-dark border-primary" type="search" placeholder="Search.." aria-label="Search" style="color:white">
@@ -51,9 +51,9 @@
                     <h5 class="card-title text-center ">GAME {{ loop.index }}</h5>
                     
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item bg-dark bg-opacity-75 text-white">Title: {{ videogame['title'] }}</li>
-                        <li class="list-group-item bg-dark bg-opacity-75 text-white">My opinion: {{ videogame['my_opinion'] }}</li>
-                        <li class="list-group-item bg-dark bg-opacity-75 text-white">My Score: {{ videogame['my_score'] }}</li>
+                        <li class="list-group-item bg-dark bg-opacity-75 text-primary">Title: <span class="text-white">{{ videogame['title'] }}</span></li>
+                        <li class="list-group-item bg-dark bg-opacity-75 text-primary">My opinion: <span class="text-white">{{ videogame['my_opinion'] }}</span></li>
+                        <li class="list-group-item bg-dark bg-opacity-75 text-primary">My Score: <span class="text-white">{{ videogame['my_score'] }}</span></li>
                         {% if videogame['completed'] %}
                         <li class="list-group-item text-success fw-bold bg-dark bg-opacity-75">✔ Completed</li>
                         {% else %}

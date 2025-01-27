@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cards.forEach(function(card) {
         card.addEventListener('mouseover', function() {
             card.classList.add('bg-danger', 'text-white', 'border', 'border-primary');
-            card.style.transform = 'scale(1.1)';
+            card.style.transform = 'scale(1.01)';
         });
 
         card.addEventListener('mouseout', function() {
