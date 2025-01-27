@@ -10,13 +10,31 @@
 
 <body class="overflow-y-scroll bg-primary bg-opacity-25 text-white">
     <style>
+        @font-face {
+            font-family: 'RETROTECH';
+            src: url('../static/fonts/RETROTECH.ttf') format('truetype');
+        }
         body {
+            font-family: 'RETROTECH', sans-serif;
+            font-size: larger;
             background-image: url('../static/img/body-image.jpg');
-            background-size: auto;
-            background-position: top center;
-            background-repeat: repeat;
+            background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+            background-position: center;
+            background-repeat: no-repeat;
             background-attachment: fixed;
             min-height: 100vh;
+            position: relative; /* Necesario para que el pseudo-elemento funcione */
+        }
+    
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.815); /* Ajustá el nivel de oscuridad con el último valor (0.5 es 50%) */
+            z-index: -1; /* Coloca esta capa detrás del contenido */
         }
       </style>
 {% block nav %}

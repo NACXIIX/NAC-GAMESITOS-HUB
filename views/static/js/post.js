@@ -1,9 +1,9 @@
-document.getElementById("postButton").addEventListener("click", function () {
-    const titleElement = document.getElementById("title");
-    const myOpinionElement = document.getElementById("my_opinion");
-    const myScoreElement = document.getElementById("my_score");
-    const completedElement = document.getElementById("completed");
-    const favouriteElement = document.getElementById("favourite");
+document.getElementById("confirmPost").addEventListener("click", function () {
+    const titleElement = document.getElementById("title-post");
+    const myOpinionElement = document.getElementById("my_opinion-post");
+    const myScoreElement = document.getElementById("my_score-post");
+    const completedElement = document.getElementById("completed-post");
+    const favouriteElement = document.getElementById("favourite-post");
     
     if (!titleElement.value || !myOpinionElement.value || !myScoreElement.value) {
         return
@@ -33,7 +33,7 @@ document.getElementById("postButton").addEventListener("click", function () {
     .then((response) => {
         if (response.ok) {
             alert("Videogame added\nYou will be redirected to the list of videogames.");
-            window.location.href = "/videogames";
+            window.location.reload()
         } else {
             return response.json().then((error) => {
                 alert("Error: " + error.error);

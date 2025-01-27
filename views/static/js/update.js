@@ -1,38 +1,38 @@
 document.getElementById("updateButton").addEventListener("click", function () {
-    const videogameID = document.getElementById("videogame_id");
-    const titleElement = document.getElementById("title");
-    const myOpinionElement = document.getElementById("my_opinion");
-    const myScoreElement = document.getElementById("my_score");
-    const completedElement = document.getElementById("completed");
-    const favouriteElement = document.getElementById("favourite");
+    const updateVideogameID = document.getElementById("videogame_id");
+    const updateTitleElement = document.getElementById("title");
+    const updateMyOpinionElement = document.getElementById("my_opinion");
+    const updateMyScoreElement = document.getElementById("my_score");
+    const updateCompletedElement = document.getElementById("completed");
+    const updateFavouriteElement = document.getElementById("favourite");
 
-    const videogameId = parseInt(videogameID.value);
-    const title = titleElement.value;
-    const myOpinion = myOpinionElement.value;
-    const myScore = parseInt(myScoreElement.value);
-    const completed = completedElement.checked;
-    const favourite = favouriteElement.checked;
+    const updateVideogameId = parseInt(updateVideogameID.value);
+    const updateTitle = updateTitleElement.value;
+    const updateMyOpinion = updateMyOpinionElement.value;
+    const updateMyScore = parseInt(updateMyScoreElement.value);
+    const updateCompleted = updateCompletedElement.checked;
+    const updateFavourite = updateFavouriteElement.checked;
 
-    if (!videogameId) {
+    if (!updateVideogameId) {
         alert("Please, select a videogame.");
         return;
     }
 
-    const data = {
-        id: videogameId,
-        title: title,
-        my_opinion: myOpinion,
-        completed: completed,
-        my_score: myScore,
-        favourite: favourite
+    const updateData = {
+        id: updateVideogameId,
+        title: updateTitle,
+        my_opinion: updateMyOpinion,
+        completed: updateCompleted,
+        my_score: updateMyScore,
+        favourite: updateFavourite
     };
 
-    fetch(`/videogames/${videogameId}`, {
+    fetch(`/videogames/${updateVideogameId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(updateData)
     })
     .then((response) => {
         if (response.ok) {
