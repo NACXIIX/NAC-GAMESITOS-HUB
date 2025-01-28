@@ -1,5 +1,3 @@
-import datetime
-
 class Videogame:
     __ID = 0
     
@@ -23,14 +21,14 @@ class Videogame:
             raise TypeError("El valor ingresado por parametro en my_score debe ser un numero entero positivo.")
         if not isinstance(favourite, bool):
             raise TypeError("El valor ingresado por parametro en favorito debe un valor booleano.")
-        self.__id = self.ultimoID()
+        self.__id = self.last_id()
         self.__title = title
         self.__my_opinion = my_opinion
         self.__completed = completed
         self.__my_score = my_score
         self.__favourite = favourite
 
-    def ultimoID(self):
+    def last_id(self):
         Videogame.__ID += 1
         return Videogame.__ID
     
