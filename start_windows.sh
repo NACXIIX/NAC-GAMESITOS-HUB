@@ -1,5 +1,5 @@
 # creando el env
-python3 -m venv .venv
+python -m venv .venv
 
 # activando el entorno
 .venv/Scripts/activate
@@ -8,4 +8,4 @@ python3 -m venv .venv
 pip install -r requirements.txt
 
 # corriendo el proyecto
-python3 app.py
+python app.py
