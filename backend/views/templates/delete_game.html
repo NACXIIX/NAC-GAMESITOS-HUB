@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %} Delete Game - GAMESITOS HUB {% endblock %}
+
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark p-3" style="height: 70px;">
+        <div class="container">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-videogames">
+                <span class="navbar-toggler-icon" ></span>
+            </button>
+
+            <a class="navbar-brand" href="/videogames">
+                <img src="../static/img/navbar-image.png" alt="navbar-image" width="100" height="100">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbar-videogames">
+                <ul class="nav justify-content-center nav-pills w-100">
+                    <li class="nav-item">
+                        <a href="/videogames" class="nav-link">ALL GAMES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/videogames/post-game" class="nav-link">ADD GAME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/videogames/update-game" class="nav-link">UPDATE GAME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/videogames/delete-game" class="nav-link bg-outline-danger active">DELETE GAME</a>
+                    </li>
+                    <form class="d-flex ms-auto" role="search">
+                        <input class="form-control me-2 bg-dark border-primary" type="search" placeholder="Search.." aria-label="Search" style="color:white">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                    <li class="nav-item ms-auto">
+                        <a href="/logout" class="nav-link">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+<header> 
+    {% block header %}{% endblock %}
+</header>
+
+<main>
+{% block contain %}
+    <div class="container mt-5">
+            <form id="deleteForm" method="POST">
+                <div class="container mb-3">
+                    <select class="form-select border border-2 border-primary" id="videogame_id" name="videogame_id" required>
+                        <option value="" class="text-center bg-primary bg-opacity-25" selected>Please select the ID to delete</option>
+                        {% for videogame in videogames %}
+                            <option class="text-center" value='{{ videogame["id"] }}'>
+                                ID: {{ videogame["id"] }} - {{ videogame["title"] }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="button" class="btn btn-primary " id="deleteButton">Eliminar</button>
+                </div>
+            </form>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/delete.js') }}"></script>
+{% endblock %}
+</main>
