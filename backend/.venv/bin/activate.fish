@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/nicoc/Desktop/VSC/NAC-GAMESITOS-HUB/.venv
+set -gx VIRTUAL_ENV /home/nicoc/Desktop/VSC/NAC-GAMESITOS-HUB/backend/.venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
